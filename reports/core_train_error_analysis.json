@@ -1,0 +1,1728 @@
+{
+  "dataset": "core",
+  "split_analyzed_for_false_negatives": "train",
+  "false_negative_analysis": {
+    "categories": {
+      "adversarial": {
+        "attacks": 383,
+        "detected": 1,
+        "missed": 382,
+        "matched_rule_counts": {
+          "safety_evasion": 1
+        },
+        "missed_signal_counts": {
+          "override_language": 75,
+          "persona_language": 2,
+          "untrusted_source_language": 4
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 10,
+          "unusual_whitespace": 3
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 436,
+          "letter_script:greek": 250,
+          "script_character_name:CYRILLIC SMALL LETTER A": 6,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 54,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 74,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 7,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 7,
+          "script_character_name:CYRILLIC SMALL LETTER HA": 6,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 124,
+          "script_character_name:CYRILLIC SMALL LETTER O": 78,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 13,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 55,
+          "script_character_name:CYRILLIC SMALL LETTER U": 12,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 13,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 56,
+          "script_character_name:GREEK SMALL LETTER CHI": 2,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 17,
+          "script_character_name:GREEK SMALL LETTER IOTA": 33,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 118,
+          "script_character_name:GREEK SMALL LETTER RHO": 11
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "agent_manipulation": {
+        "attacks": 25,
+        "detected": 0,
+        "missed": 25,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "instruction_noun": 3,
+          "override_language": 3,
+          "untrusted_source_language": 3
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 1,
+          "unusual_whitespace": 2
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 40,
+          "letter_script:greek": 26,
+          "script_character_name:CYRILLIC SMALL LETTER A": 2,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 3,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 1,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 3,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 13,
+          "script_character_name:CYRILLIC SMALL LETTER O": 5,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 7,
+          "script_character_name:CYRILLIC SMALL LETTER U": 3,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 9,
+          "script_character_name:GREEK SMALL LETTER CHI": 2,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 4,
+          "script_character_name:GREEK SMALL LETTER IOTA": 4,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 5,
+          "script_character_name:GREEK SMALL LETTER RHO": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "chain_of_thought": {
+        "attacks": 2,
+        "detected": 0,
+        "missed": 2,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 2,
+          "letter_script:greek": 2,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 2
+        },
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "code_execution": {
+        "attacks": 4,
+        "detected": 0,
+        "missed": 4,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 11,
+          "letter_script:greek": 6,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 3,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 2,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 4,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 5
+        },
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "context_confusion": {
+        "attacks": 16,
+        "detected": 9,
+        "missed": 7,
+        "matched_rule_counts": {
+          "instruction_override": 4,
+          "obfuscated_directive": 6,
+          "role_manipulation": 1,
+          "safety_evasion": 2,
+          "untrusted_content_injection": 2
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "persona_language": 1,
+          "prior_instruction_reference": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 1,
+          "unusual_whitespace": 3
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 28,
+          "letter_script:greek": 18,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 5,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 9,
+          "script_character_name:CYRILLIC SMALL LETTER O": 8,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 4,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 4,
+          "script_character_name:GREEK SMALL LETTER IOTA": 7,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 7
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "control": {
+        "attacks": 17,
+        "detected": 0,
+        "missed": 17,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "persona_language": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 1
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 12,
+          "letter_script:greek": 17,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 6,
+          "script_character_name:CYRILLIC SMALL LETTER O": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 5,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 4,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 5,
+          "script_character_name:GREEK SMALL LETTER RHO": 1
+        },
+        "suggested_improvements": [
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "crescendo": {
+        "attacks": 9,
+        "detected": 0,
+        "missed": 9,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "instruction_noun": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "direct_injection": {
+        "attacks": 1397,
+        "detected": 93,
+        "missed": 1304,
+        "matched_rule_counts": {
+          "instruction_override": 76,
+          "obfuscated_directive": 17,
+          "role_manipulation": 3,
+          "safety_evasion": 4,
+          "untrusted_content_injection": 17
+        },
+        "missed_signal_counts": {
+          "base64_like_run": 5,
+          "encoded_marker_plus_instruction_noun": 3,
+          "encoded_marker_plus_new_request": 1,
+          "encoded_payload_marker": 16,
+          "follow_new_request": 2,
+          "instruction_noun": 199,
+          "override_language": 267,
+          "override_plus_instruction_noun": 122,
+          "override_plus_prior_reference": 15,
+          "persona_language": 27,
+          "prior_instruction_reference": 27,
+          "prompt_extraction_language": 17,
+          "punctuation_split_word": 8,
+          "token_marker": 4,
+          "token_marker_plus_override": 1,
+          "untrusted_source_language": 7
+        },
+        "missed_normalization_counts": {
+          "invisible_format_characters": 13,
+          "nfkc_changes": 159,
+          "unusual_whitespace": 634
+        },
+        "missed_character_name_counts": {
+          "compatibility_alphanumeric": 5996,
+          "fullwidth_character": 4277,
+          "invisible_format_character": 16,
+          "letter_script:armenian": 5,
+          "letter_script:cherokee": 1,
+          "letter_script:cyrillic": 712,
+          "letter_script:greek": 14,
+          "nonstandard_space": 2,
+          "script_character_name:ARMENIAN CAPITAL LETTER GIM": 1,
+          "script_character_name:ARMENIAN SMALL LETTER VO": 4,
+          "script_character_name:CHEROKEE LETTER V": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER A": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER DE": 5,
+          "script_character_name:CYRILLIC CAPITAL LETTER E": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER EF": 2,
+          "script_character_name:CYRILLIC CAPITAL LETTER EM": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER EN": 6,
+          "script_character_name:CYRILLIC CAPITAL LETTER ER": 3,
+          "script_character_name:CYRILLIC CAPITAL LETTER ES": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER I": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER IE": 6,
+          "script_character_name:CYRILLIC CAPITAL LETTER KOMI DE": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER O": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER PE": 7,
+          "script_character_name:CYRILLIC CAPITAL LETTER SHA": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER VE": 4,
+          "script_character_name:CYRILLIC CAPITAL LETTER WE": 4,
+          "script_character_name:CYRILLIC CAPITAL LETTER YA": 2,
+          "script_character_name:CYRILLIC CAPITAL LETTER YU": 1,
+          "script_character_name:CYRILLIC SMALL LETTER A": 60,
+          "script_character_name:CYRILLIC SMALL LETTER BE": 16,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 4,
+          "script_character_name:CYRILLIC SMALL LETTER CHE": 7,
+          "script_character_name:CYRILLIC SMALL LETTER DE": 21,
+          "script_character_name:CYRILLIC SMALL LETTER E": 6,
+          "script_character_name:CYRILLIC SMALL LETTER EF": 1,
+          "script_character_name:CYRILLIC SMALL LETTER EL": 26,
+          "script_character_name:CYRILLIC SMALL LETTER EM": 10,
+          "script_character_name:CYRILLIC SMALL LETTER EN": 30,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 29,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 37,
+          "script_character_name:CYRILLIC SMALL LETTER GHE": 12,
+          "script_character_name:CYRILLIC SMALL LETTER HA": 6,
+          "script_character_name:CYRILLIC SMALL LETTER I": 43,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 52,
+          "script_character_name:CYRILLIC SMALL LETTER KA": 32,
+          "script_character_name:CYRILLIC SMALL LETTER O": 54,
+          "script_character_name:CYRILLIC SMALL LETTER OMEGA": 1,
+          "script_character_name:CYRILLIC SMALL LETTER PE": 21,
+          "script_character_name:CYRILLIC SMALL LETTER SHA": 3,
+          "script_character_name:CYRILLIC SMALL LETTER SHCHA": 3,
+          "script_character_name:CYRILLIC SMALL LETTER SHORT I": 25,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 12,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 41,
+          "script_character_name:CYRILLIC SMALL LETTER TSE": 5,
+          "script_character_name:CYRILLIC SMALL LETTER U": 20,
+          "script_character_name:CYRILLIC SMALL LETTER UKRAINIAN IE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER VE": 33,
+          "script_character_name:CYRILLIC SMALL LETTER WE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER YA": 11,
+          "script_character_name:CYRILLIC SMALL LETTER YERU": 15,
+          "script_character_name:CYRILLIC SMALL LETTER YU": 4,
+          "script_character_name:CYRILLIC SMALL LETTER ZE": 15,
+          "script_character_name:CYRILLIC SMALL LETTER ZHE": 7,
+          "script_character_name:GREEK CAPITAL LETTER DELTA": 1,
+          "script_character_name:GREEK CAPITAL LETTER EPSILON": 1,
+          "script_character_name:GREEK CAPITAL LETTER NU": 5,
+          "script_character_name:GREEK CAPITAL LETTER OMEGA": 2,
+          "script_character_name:GREEK CAPITAL LETTER PI": 1,
+          "script_character_name:GREEK SMALL LETTER PI": 4
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads.",
+          "Combine token-like control markers with nearby instruction override or extraction language.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "encoding": {
+        "attacks": 177,
+        "detected": 4,
+        "missed": 173,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 2,
+          "instruction_override": 3,
+          "obfuscated_directive": 3
+        },
+        "missed_signal_counts": {
+          "base64_like_run": 12,
+          "encoded_payload_marker": 22,
+          "instruction_noun": 2,
+          "override_language": 2,
+          "prior_instruction_reference": 2,
+          "prompt_extraction_language": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 8,
+          "unusual_whitespace": 4
+        },
+        "missed_character_name_counts": {
+          "compatibility_alphanumeric": 22,
+          "letter_script:cyrillic": 83,
+          "letter_script:greek": 81,
+          "script_character_name:CYRILLIC SMALL LETTER A": 3,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 13,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 6,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 21,
+          "script_character_name:CYRILLIC SMALL LETTER O": 22,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 7,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 10,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 3,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 38,
+          "script_character_name:GREEK SMALL LETTER CHI": 1,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 7,
+          "script_character_name:GREEK SMALL LETTER IOTA": 12,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 17,
+          "script_character_name:GREEK SMALL LETTER RHO": 3
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "encoding_obfuscation": {
+        "attacks": 6,
+        "detected": 0,
+        "missed": 6,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "base64_like_run": 3,
+          "encoded_marker_plus_instruction_noun": 1,
+          "encoded_payload_marker": 2,
+          "instruction_noun": 2,
+          "prior_instruction_reference": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 1
+        },
+        "missed_character_name_counts": {
+          "fullwidth_character": 30
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads."
+        ]
+      },
+      "indirect_injection": {
+        "attacks": 8,
+        "detected": 5,
+        "missed": 3,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 1,
+          "instruction_override": 4,
+          "obfuscated_directive": 3,
+          "untrusted_content_injection": 3
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "override_language": 2,
+          "prior_instruction_reference": 1,
+          "untrusted_source_language": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "instruction_override": {
+        "attacks": 21,
+        "detected": 10,
+        "missed": 11,
+        "matched_rule_counts": {
+          "instruction_override": 10,
+          "obfuscated_directive": 6
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 6,
+          "override_language": 1,
+          "prior_instruction_reference": 4,
+          "untrusted_source_language": 2
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 31,
+          "letter_script:greek": 17,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 7,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 5,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 12,
+          "script_character_name:CYRILLIC SMALL LETTER O": 4,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 5,
+          "script_character_name:GREEK SMALL LETTER IOTA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 11
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "jailbreak": {
+        "attacks": 291,
+        "detected": 27,
+        "missed": 264,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 8,
+          "instruction_override": 3,
+          "obfuscated_directive": 3,
+          "role_manipulation": 6,
+          "safety_evasion": 19
+        },
+        "missed_signal_counts": {
+          "base64_like_run": 6,
+          "follow_new_request": 20,
+          "instruction_noun": 53,
+          "override_language": 39,
+          "override_plus_instruction_noun": 25,
+          "override_plus_new_request": 19,
+          "override_plus_prior_reference": 2,
+          "persona_language": 19,
+          "prior_instruction_reference": 3,
+          "prompt_extraction_language": 5,
+          "untrusted_source_language": 6
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 9,
+          "unusual_whitespace": 24
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 175,
+          "letter_script:greek": 77,
+          "nonstandard_space": 4,
+          "script_character_name:CYRILLIC SMALL LETTER A": 10,
+          "script_character_name:CYRILLIC SMALL LETTER BE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 26,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 21,
+          "script_character_name:CYRILLIC SMALL LETTER EF": 1,
+          "script_character_name:CYRILLIC SMALL LETTER EM": 1,
+          "script_character_name:CYRILLIC SMALL LETTER EN": 1,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 3,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 11,
+          "script_character_name:CYRILLIC SMALL LETTER I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 31,
+          "script_character_name:CYRILLIC SMALL LETTER IO": 5,
+          "script_character_name:CYRILLIC SMALL LETTER O": 26,
+          "script_character_name:CYRILLIC SMALL LETTER PE": 5,
+          "script_character_name:CYRILLIC SMALL LETTER SHORT I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 4,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 15,
+          "script_character_name:CYRILLIC SMALL LETTER U": 6,
+          "script_character_name:CYRILLIC SMALL LETTER VE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER YA": 3,
+          "script_character_name:CYRILLIC SMALL LETTER ZHE": 1,
+          "script_character_name:GREEK CAPITAL LETTER OMICRON": 2,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 2,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 25,
+          "script_character_name:GREEK SMALL LETTER ALPHA WITH TONOS": 1,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 18,
+          "script_character_name:GREEK SMALL LETTER KAPPA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 27
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "many_shot": {
+        "attacks": 5,
+        "detected": 2,
+        "missed": 3,
+        "matched_rule_counts": {
+          "safety_evasion": 2
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "override_language": 2,
+          "override_plus_instruction_noun": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases."
+        ]
+      },
+      "model_fingerprinting": {
+        "attacks": 16,
+        "detected": 0,
+        "missed": 16,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "base64_like_run": 2
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 27,
+          "letter_script:greek": 19,
+          "script_character_name:CYRILLIC SMALL LETTER A": 6,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 3,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 1,
+          "script_character_name:CYRILLIC SMALL LETTER HA": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER O": 5,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER U": 3,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 13,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 2,
+          "script_character_name:GREEK SMALL LETTER IOTA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 3
+        },
+        "suggested_improvements": [
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads."
+        ]
+      },
+      "multi_turn": {
+        "attacks": 12,
+        "detected": 0,
+        "missed": 12,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "instruction_noun": 3,
+          "override_language": 4,
+          "override_plus_instruction_noun": 3,
+          "persona_language": 3
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 16,
+          "letter_script:greek": 1,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 5,
+          "script_character_name:CYRILLIC SMALL LETTER O": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "output_manipulation": {
+        "attacks": 16,
+        "detected": 4,
+        "missed": 12,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 2,
+          "instruction_override": 2,
+          "obfuscated_directive": 2
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 2,
+          "override_language": 1,
+          "override_plus_instruction_noun": 1,
+          "override_plus_prior_reference": 1,
+          "persona_language": 2,
+          "prior_instruction_reference": 2,
+          "prompt_extraction_language": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 1
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 14,
+          "letter_script:greek": 9,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 3,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER O": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 4,
+          "script_character_name:GREEK SMALL LETTER IOTA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 2
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "payload_injection": {
+        "attacks": 10,
+        "detected": 6,
+        "missed": 4,
+        "matched_rule_counts": {
+          "instruction_override": 5,
+          "obfuscated_directive": 3,
+          "safety_evasion": 1,
+          "untrusted_content_injection": 2
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 2,
+          "override_language": 1,
+          "prior_instruction_reference": 1,
+          "untrusted_source_language": 1
+        },
+        "missed_normalization_counts": {
+          "unusual_whitespace": 3
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 15,
+          "letter_script:greek": 5,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 5,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 4,
+          "script_character_name:CYRILLIC SMALL LETTER O": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 3
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "persona_replacement": {
+        "attacks": 25,
+        "detected": 0,
+        "missed": 25,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "override_language": 2,
+          "persona_language": 6
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 23,
+          "letter_script:greek": 13,
+          "script_character_name:CYRILLIC SMALL LETTER A": 1,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 8,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 5,
+          "script_character_name:CYRILLIC SMALL LETTER O": 3,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 3,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 3,
+          "script_character_name:GREEK SMALL LETTER IOTA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 5
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "prompt_extraction": {
+        "attacks": 14,
+        "detected": 1,
+        "missed": 13,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 1
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 4,
+          "prior_instruction_reference": 4,
+          "prompt_extraction_language": 4
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 28,
+          "letter_script:greek": 9,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 4,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 11,
+          "script_character_name:CYRILLIC SMALL LETTER O": 6,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 5,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 7
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "prompt_injection": {
+        "attacks": 16,
+        "detected": 4,
+        "missed": 12,
+        "matched_rule_counts": {
+          "instruction_override": 3,
+          "obfuscated_directive": 3
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 2,
+          "override_language": 5,
+          "override_plus_instruction_noun": 1,
+          "prior_instruction_reference": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 24,
+          "letter_script:greek": 25,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 4,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 10,
+          "script_character_name:CYRILLIC SMALL LETTER O": 3,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 3,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 8,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 4,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 12
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases."
+        ]
+      },
+      "prompt_leak": {
+        "attacks": 3,
+        "detected": 0,
+        "missed": 3,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "override_language": 2
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 34,
+          "letter_script:greek": 14,
+          "script_character_name:CYRILLIC CAPITAL LETTER ER": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER IE": 3,
+          "script_character_name:CYRILLIC CAPITAL LETTER U": 4,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 3,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 4,
+          "script_character_name:CYRILLIC SMALL LETTER HA": 2,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 13,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 2,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK CAPITAL LETTER ALPHA": 3,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 9
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases."
+        ]
+      },
+      "rag_poisoning": {
+        "attacks": 26,
+        "detected": 8,
+        "missed": 18,
+        "matched_rule_counts": {
+          "instruction_override": 8,
+          "obfuscated_directive": 6,
+          "untrusted_content_injection": 2
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 9,
+          "override_language": 8,
+          "override_plus_instruction_noun": 4,
+          "persona_language": 2,
+          "prior_instruction_reference": 1,
+          "untrusted_source_language": 11
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 29,
+          "letter_script:greek": 14,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 5,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 4,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 7,
+          "script_character_name:CYRILLIC SMALL LETTER O": 3,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 6,
+          "script_character_name:CYRILLIC SMALL LETTER U": 2,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 1,
+          "script_character_name:GREEK SMALL LETTER CHI": 1,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 3,
+          "script_character_name:GREEK SMALL LETTER IOTA": 3,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 5,
+          "script_character_name:GREEK SMALL LETTER RHO": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "response_manipulation": {
+        "attacks": 13,
+        "detected": 0,
+        "missed": 13,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "override_language": 3,
+          "persona_language": 6
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 25,
+          "letter_script:greek": 15,
+          "script_character_name:CYRILLIC SMALL LETTER A": 1,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 4,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 7,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 9,
+          "script_character_name:CYRILLIC SMALL LETTER O": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 4,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 6,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 3,
+          "script_character_name:GREEK SMALL LETTER RHO": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "system_extraction": {
+        "attacks": 10,
+        "detected": 3,
+        "missed": 7,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 3
+        },
+        "missed_signal_counts": {
+          "encoded_marker_plus_instruction_noun": 1,
+          "encoded_payload_marker": 1,
+          "instruction_noun": 7,
+          "prior_instruction_reference": 5,
+          "prompt_extraction_language": 3
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "system_manipulation": {
+        "attacks": 29,
+        "detected": 3,
+        "missed": 26,
+        "matched_rule_counts": {
+          "instruction_override": 2,
+          "obfuscated_directive": 1,
+          "safety_evasion": 1
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 8,
+          "override_language": 3,
+          "persona_language": 1,
+          "prior_instruction_reference": 3,
+          "prompt_extraction_language": 2
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 36,
+          "letter_script:greek": 19,
+          "script_character_name:CYRILLIC SMALL LETTER A": 1,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 4,
+          "script_character_name:CYRILLIC SMALL LETTER HA": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 11,
+          "script_character_name:CYRILLIC SMALL LETTER O": 5,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 11,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 6,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 2,
+          "script_character_name:GREEK SMALL LETTER IOTA": 6,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 5
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "token_injection": {
+        "attacks": 4,
+        "detected": 0,
+        "missed": 4,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "token_marker": 4
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 1
+        },
+        "suggested_improvements": [
+          "Combine token-like control markers with nearby instruction override or extraction language."
+        ]
+      },
+      "token_smuggling": {
+        "attacks": 27,
+        "detected": 11,
+        "missed": 16,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 5,
+          "instruction_override": 7,
+          "obfuscated_directive": 8,
+          "role_manipulation": 2,
+          "safety_evasion": 2,
+          "token_wrapped_instruction": 6
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 2,
+          "override_language": 4,
+          "override_plus_instruction_noun": 1,
+          "override_plus_prior_reference": 1,
+          "prior_instruction_reference": 2,
+          "prompt_extraction_language": 1,
+          "token_marker": 5,
+          "token_marker_plus_override": 1
+        },
+        "missed_normalization_counts": {
+          "unusual_whitespace": 4
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 39,
+          "letter_script:greek": 15,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 4,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 6,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 19,
+          "script_character_name:CYRILLIC SMALL LETTER O": 4,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 4,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 7,
+          "script_character_name:GREEK SMALL LETTER CHI": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 5
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Combine token-like control markers with nearby instruction override or extraction language.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "training_extraction": {
+        "attacks": 68,
+        "detected": 0,
+        "missed": 68,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "override_language": 22,
+          "untrusted_source_language": 2
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 2
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 68,
+          "letter_script:greek": 33,
+          "script_character_name:CYRILLIC SMALL LETTER A": 3,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 10,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 17,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 2,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 9,
+          "script_character_name:CYRILLIC SMALL LETTER O": 8,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 5,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 9,
+          "script_character_name:CYRILLIC SMALL LETTER U": 5,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 3,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 8,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 2,
+          "script_character_name:GREEK SMALL LETTER IOTA": 9,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 10,
+          "script_character_name:GREEK SMALL LETTER RHO": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      }
+    },
+    "overall_missed_signal_counts": {
+      "base64_like_run": 28,
+      "encoded_marker_plus_instruction_noun": 5,
+      "encoded_marker_plus_new_request": 1,
+      "encoded_payload_marker": 41,
+      "follow_new_request": 22,
+      "instruction_noun": 308,
+      "normalization:invisible_format_characters": 13,
+      "normalization:nfkc_changes": 193,
+      "normalization:unusual_whitespace": 677,
+      "override_language": 446,
+      "override_plus_instruction_noun": 158,
+      "override_plus_new_request": 19,
+      "override_plus_prior_reference": 19,
+      "persona_language": 70,
+      "prior_instruction_reference": 58,
+      "prompt_extraction_language": 34,
+      "punctuation_split_word": 8,
+      "token_marker": 13,
+      "token_marker_plus_override": 2,
+      "untrusted_source_language": 37
+    },
+    "overall_detected_rule_counts": {
+      "hidden_prompt_request": 22,
+      "instruction_override": 127,
+      "obfuscated_directive": 61,
+      "role_manipulation": 12,
+      "safety_evasion": 32,
+      "token_wrapped_instruction": 6,
+      "untrusted_content_injection": 26
+    },
+    "privacy": "Counts only; prompt text and excerpts are not included."
+  },
+  "validation_attack_analysis": {
+    "categories": {
+      "adversarial": {
+        "attacks": 85,
+        "detected": 1,
+        "missed": 84,
+        "matched_rule_counts": {
+          "safety_evasion": 1
+        },
+        "missed_signal_counts": {
+          "override_language": 14,
+          "untrusted_source_language": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 5
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 104,
+          "letter_script:greek": 54,
+          "script_character_name:CYRILLIC SMALL LETTER A": 5,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 9,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 19,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 4,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 26,
+          "script_character_name:CYRILLIC SMALL LETTER O": 24,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 4,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 6,
+          "script_character_name:CYRILLIC SMALL LETTER U": 7,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 6,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 12,
+          "script_character_name:GREEK SMALL LETTER CHI": 1,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 6,
+          "script_character_name:GREEK SMALL LETTER IOTA": 5,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 23,
+          "script_character_name:GREEK SMALL LETTER RHO": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "agent_manipulation": {
+        "attacks": 3,
+        "detected": 0,
+        "missed": 3,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 3,
+          "letter_script:greek": 3,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 1
+        },
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "code_execution": {
+        "attacks": 1,
+        "detected": 0,
+        "missed": 1,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "context_confusion": {
+        "attacks": 4,
+        "detected": 0,
+        "missed": 4,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "override_language": 1,
+          "prior_instruction_reference": 1
+        },
+        "missed_normalization_counts": {
+          "unusual_whitespace": 2
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 13,
+          "letter_script:greek": 8,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 1,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER O": 4,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 3,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 1,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 2,
+          "script_character_name:GREEK SMALL LETTER IOTA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 3
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text."
+        ]
+      },
+      "control": {
+        "attacks": 5,
+        "detected": 0,
+        "missed": 5,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 8,
+          "letter_script:greek": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER O": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 3,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 1
+        },
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "direct_injection": {
+        "attacks": 293,
+        "detected": 21,
+        "missed": 272,
+        "matched_rule_counts": {
+          "instruction_override": 16,
+          "obfuscated_directive": 2,
+          "role_manipulation": 2,
+          "safety_evasion": 5
+        },
+        "missed_signal_counts": {
+          "base64_like_run": 2,
+          "encoded_marker_plus_instruction_noun": 2,
+          "encoded_payload_marker": 4,
+          "instruction_noun": 47,
+          "override_language": 59,
+          "override_plus_instruction_noun": 31,
+          "override_plus_prior_reference": 7,
+          "persona_language": 5,
+          "prior_instruction_reference": 9,
+          "prompt_extraction_language": 4,
+          "punctuation_split_word": 3,
+          "untrusted_source_language": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 31,
+          "unusual_whitespace": 136
+        },
+        "missed_character_name_counts": {
+          "compatibility_alphanumeric": 1156,
+          "fullwidth_character": 1138,
+          "letter_script:cyrillic": 31,
+          "letter_script:greek": 4,
+          "script_character_name:CYRILLIC CAPITAL LETTER PE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER A": 2,
+          "script_character_name:CYRILLIC SMALL LETTER BE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER EF": 1,
+          "script_character_name:CYRILLIC SMALL LETTER EL": 1,
+          "script_character_name:CYRILLIC SMALL LETTER EN": 1,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 3,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 1,
+          "script_character_name:CYRILLIC SMALL LETTER GHE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER I": 4,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER KA": 2,
+          "script_character_name:CYRILLIC SMALL LETTER SHORT I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TSE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:CYRILLIC SMALL LETTER VE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER YERU": 2,
+          "script_character_name:GREEK SMALL LETTER PI": 4
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "encoding": {
+        "attacks": 40,
+        "detected": 1,
+        "missed": 39,
+        "matched_rule_counts": {
+          "instruction_override": 1
+        },
+        "missed_signal_counts": {
+          "base64_like_run": 2,
+          "encoded_payload_marker": 3,
+          "instruction_noun": 1,
+          "prior_instruction_reference": 1,
+          "prompt_extraction_language": 1
+        },
+        "missed_normalization_counts": {
+          "nfkc_changes": 2
+        },
+        "missed_character_name_counts": {
+          "compatibility_alphanumeric": 4,
+          "letter_script:cyrillic": 19,
+          "letter_script:greek": 12,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 10,
+          "script_character_name:CYRILLIC SMALL LETTER O": 2,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 1,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK LUNATE SIGMA SYMBOL": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 4,
+          "script_character_name:GREEK SMALL LETTER IOTA": 4,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 3
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Flag explicit decode-then-follow requests and encoded payload markers in context; do not decode or execute payloads.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "encoding_obfuscation": {
+        "attacks": 3,
+        "detected": 0,
+        "missed": 3,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "instruction_noun": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "instruction_override": {
+        "attacks": 2,
+        "detected": 0,
+        "missed": 2,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "untrusted_source_language": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:greek": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 2
+        },
+        "suggested_improvements": [
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "jailbreak": {
+        "attacks": 48,
+        "detected": 3,
+        "missed": 45,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 1,
+          "instruction_override": 2,
+          "obfuscated_directive": 2,
+          "safety_evasion": 1,
+          "untrusted_content_injection": 1
+        },
+        "missed_signal_counts": {
+          "follow_new_request": 2,
+          "instruction_noun": 6,
+          "override_language": 4,
+          "override_plus_instruction_noun": 2,
+          "override_plus_new_request": 2,
+          "persona_language": 5,
+          "prompt_extraction_language": 1,
+          "untrusted_source_language": 1
+        },
+        "missed_normalization_counts": {
+          "c0_control_characters": 1,
+          "nfkc_changes": 1,
+          "unusual_whitespace": 4
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 68,
+          "letter_script:greek": 16,
+          "nonstandard_space": 1,
+          "script_character_name:CYRILLIC CAPITAL LETTER I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER A": 7,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 4,
+          "script_character_name:CYRILLIC SMALL LETTER DE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER EF": 1,
+          "script_character_name:CYRILLIC SMALL LETTER EL": 2,
+          "script_character_name:CYRILLIC SMALL LETTER EN": 6,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 4,
+          "script_character_name:CYRILLIC SMALL LETTER ES": 1,
+          "script_character_name:CYRILLIC SMALL LETTER GHE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER I": 6,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 12,
+          "script_character_name:CYRILLIC SMALL LETTER IO": 1,
+          "script_character_name:CYRILLIC SMALL LETTER KA": 1,
+          "script_character_name:CYRILLIC SMALL LETTER O": 3,
+          "script_character_name:CYRILLIC SMALL LETTER PE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER SHORT I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER SOFT SIGN": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER TSE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:CYRILLIC SMALL LETTER VE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER YERU": 3,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 6,
+          "script_character_name:GREEK SMALL LETTER EPSILON": 5,
+          "script_character_name:GREEK SMALL LETTER IOTA": 3,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 1,
+          "script_character_name:GREEK SMALL LETTER RHO": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "model_fingerprinting": {
+        "attacks": 2,
+        "detected": 0,
+        "missed": 2,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 2,
+          "letter_script:greek": 2,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 2
+        },
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "multi_turn": {
+        "attacks": 9,
+        "detected": 0,
+        "missed": 9,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "override_language": 1,
+          "persona_language": 2
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 12,
+          "letter_script:greek": 6,
+          "script_character_name:CYRILLIC SMALL LETTER A": 1,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER ER": 2,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 3,
+          "script_character_name:CYRILLIC SMALL LETTER O": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 4
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "payload_injection": {
+        "attacks": 4,
+        "detected": 1,
+        "missed": 3,
+        "matched_rule_counts": {
+          "instruction_override": 1,
+          "obfuscated_directive": 1
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "override_language": 2,
+          "override_plus_instruction_noun": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 5,
+          "letter_script:greek": 6,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER O": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 2,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 3
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases."
+        ]
+      },
+      "persona_replacement": {
+        "attacks": 1,
+        "detected": 0,
+        "missed": 1,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 5,
+          "letter_script:greek": 3,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER O": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 1
+        },
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "prompt_extraction": {
+        "attacks": 2,
+        "detected": 0,
+        "missed": 2,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "prior_instruction_reference": 2,
+          "prompt_extraction_language": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "prompt_injection": {
+        "attacks": 1,
+        "detected": 0,
+        "missed": 1,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {},
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "No narrow lexical signal recurred enough to justify a new rule; collect additional validation evidence first."
+        ]
+      },
+      "rag_poisoning": {
+        "attacks": 6,
+        "detected": 1,
+        "missed": 5,
+        "matched_rule_counts": {
+          "instruction_override": 1,
+          "obfuscated_directive": 1
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "override_language": 3,
+          "override_plus_instruction_noun": 1,
+          "untrusted_source_language": 3
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 4,
+          "letter_script:greek": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER O": 1,
+          "script_character_name:GREEK SMALL LETTER IOTA": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Pair untrusted-source references with commands to follow that source over system/developer guidance."
+        ]
+      },
+      "response_manipulation": {
+        "attacks": 2,
+        "detected": 0,
+        "missed": 2,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "persona_language": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 3,
+          "letter_script:greek": 2,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 2
+        },
+        "suggested_improvements": [
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "system_extraction": {
+        "attacks": 3,
+        "detected": 2,
+        "missed": 1,
+        "matched_rule_counts": {
+          "hidden_prompt_request": 2
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "prior_instruction_reference": 1,
+          "prompt_extraction_language": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {},
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases.",
+          "Expand high-confidence extraction verbs and targets such as original/initial prompts and prior messages."
+        ]
+      },
+      "system_manipulation": {
+        "attacks": 2,
+        "detected": 1,
+        "missed": 1,
+        "matched_rule_counts": {
+          "safety_evasion": 1
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 1,
+          "prior_instruction_reference": 1
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 2,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 1
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases."
+        ]
+      },
+      "token_smuggling": {
+        "attacks": 5,
+        "detected": 1,
+        "missed": 4,
+        "matched_rule_counts": {
+          "safety_evasion": 1
+        },
+        "missed_signal_counts": {
+          "instruction_noun": 2,
+          "persona_language": 1,
+          "token_marker": 2
+        },
+        "missed_normalization_counts": {
+          "unusual_whitespace": 1
+        },
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 10,
+          "letter_script:greek": 1,
+          "script_character_name:CYRILLIC SMALL LETTER A": 1,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 1,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER HA": 1,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 1,
+          "script_character_name:CYRILLIC SMALL LETTER O": 1,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 1
+        },
+        "suggested_improvements": [
+          "Normalize whitespace and common compatibility/confusable characters before matching; test mixed-script benign text.",
+          "Combine token-like control markers with nearby instruction override or extraction language.",
+          "Broaden only bypass-oriented role changes; ordinary task personas should remain clear."
+        ]
+      },
+      "training_extraction": {
+        "attacks": 13,
+        "detected": 0,
+        "missed": 13,
+        "matched_rule_counts": {},
+        "missed_signal_counts": {
+          "override_language": 6
+        },
+        "missed_normalization_counts": {},
+        "missed_character_name_counts": {
+          "letter_script:cyrillic": 16,
+          "letter_script:greek": 6,
+          "script_character_name:CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I": 2,
+          "script_character_name:CYRILLIC SMALL LETTER DZE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER IE": 7,
+          "script_character_name:CYRILLIC SMALL LETTER O": 2,
+          "script_character_name:CYRILLIC SMALL LETTER TE": 2,
+          "script_character_name:CYRILLIC SMALL LETTER U": 1,
+          "script_character_name:GREEK SMALL LETTER ALPHA": 4,
+          "script_character_name:GREEK SMALL LETTER OMICRON": 2
+        },
+        "suggested_improvements": [
+          "Test contextual combinations of an override verb, prior-instruction reference, and a new-request directive; preserve benign explanation cases."
+        ]
+      }
+    },
+    "overall_missed_signal_counts": {
+      "base64_like_run": 4,
+      "encoded_marker_plus_instruction_noun": 2,
+      "encoded_payload_marker": 7,
+      "follow_new_request": 2,
+      "instruction_noun": 64,
+      "normalization:c0_control_characters": 1,
+      "normalization:nfkc_changes": 39,
+      "normalization:unusual_whitespace": 143,
+      "override_language": 90,
+      "override_plus_instruction_noun": 35,
+      "override_plus_new_request": 2,
+      "override_plus_prior_reference": 7,
+      "persona_language": 14,
+      "prior_instruction_reference": 15,
+      "prompt_extraction_language": 8,
+      "punctuation_split_word": 3,
+      "token_marker": 2,
+      "untrusted_source_language": 7
+    },
+    "overall_detected_rule_counts": {
+      "hidden_prompt_request": 3,
+      "instruction_override": 21,
+      "obfuscated_directive": 6,
+      "role_manipulation": 2,
+      "safety_evasion": 9,
+      "untrusted_content_injection": 1
+    },
+    "privacy": "Counts only; prompt text and excerpts are not included."
+  },
+  "validation_false_positive_analysis": {
+    "false_positive_examples": 0,
+    "by_category": {},
+    "matched_rule_counts": {}
+  },
+  "train_validation_overlap": {
+    "train_rows": 4391,
+    "validation_rows": 941,
+    "normalized_exact_match_pairs": 31,
+    "shared_normalized_exact_texts": 28,
+    "shared_exact_texts_with_label_disagreement": 0,
+    "shared_group_ids": 0,
+    "near_duplicate_threshold_jaccard": 0.85,
+    "near_duplicate_pairs": 11,
+    "train_rows_with_near_duplicate": 11,
+    "maximum_near_duplicate_jaccard": 0.9704433497536946,
+    "method": "NFKC, case-fold, remove format controls, tokenize alphanumeric words; compare unique 3-word shingle Jaccard candidates."
+  },
+  "limitations": "Category labels are descriptive; numeric label is the binary ground truth. Analysis identifies patterns for validation, not proof of protection."
+}

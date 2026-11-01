@@ -1,0 +1,11 @@
+Flask==3.1.2
+pytest==8.4.2
+pypdf>=5.0,<7
+python-docx>=1.1,<2
+python-pptx>=1.0.2,<2
+openpyxl>=3.1.5,<4
+defusedxml>=0.7.1,<1
+faster-whisper>=1.1,<2
+pyarrow>=15,<24
+scikit-learn>=1.5,<2
+# Optional image OCR: pip install Pillow pytesseract; install Tesseract separately.
