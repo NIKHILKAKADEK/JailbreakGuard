@@ -1,10 +1,20 @@
-import { useRef, useState } from 'react';
-import { Activity, ArrowRight, Check, Clock3, RotateCcw, ScanSearch, Shield, ShieldAlert, ShieldCheck, Upload, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Activity, ArrowRight, Check, Clock3, RotateCcw, ScanSearch, Shield, ShieldAlert, ShieldCheck, Upload, X, Sun, Moon } from 'lucide-react';
 
 const MAX_LENGTH = 10000;
 const ACCEPT = '.txt,.md,.pdf,.docx,.png,.jpg,.jpeg,.pptx,.xlsx,.json,.xml,.html,.htm';
 const FORMATS = 'TXT, MD, PDF, DOCX, PNG, JPG, JPEG, PPTX, XLSX, JSON, XML, HTML, HTM';
 const AUDIO_ACCEPT = '.wav,.mp3,.m4a,.flac';
+
+function getInitialTheme() {
+  const rootTheme = document.documentElement.dataset.theme;
+  if (rootTheme === 'light' || rootTheme === 'dark') return rootTheme;
+  try {
+    const savedTheme = localStorage.getItem('jailbreakguard-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
+  } catch { /* Storage may be unavailable in private browsing. */ }
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
 
 function isScanResult(value) {
   return value && typeof value.status === 'string'
@@ -28,6 +38,7 @@ function ResultsPanel({ result, loading }) {
 }
 
 export default function App() {
+  const [theme, setTheme] = useState(getInitialTheme);
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState(null);
   const [history, setHistory] = useState([]);
@@ -39,6 +50,12 @@ export default function App() {
   const [error, setError] = useState('');
   const fileInput = useRef(null);
   const audioInput = useRef(null);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0b1020' : '#f5f7fb');
+    try { localStorage.setItem('jailbreakguard-theme', theme); } catch { /* Theme still works for this session. */ }
+  }, [theme]);
 
   function addHistory(payload) { setHistory((items) => [{ id: Date.now(), level: payload.level, status: payload.status, time: new Date() }, ...items]); }
 
@@ -104,7 +121,7 @@ export default function App() {
 
   return <div className="app-shell" id="top">
     <aside className="sidebar"><a className="brand" href="#top"><span className="brand-icon"><Shield size={20} /></span><span><strong>JailbreakGuard</strong><small>Prompt security</small></span></a><p className="nav-label">WORKSPACE</p><nav aria-label="Workspace navigation"><a className="nav-link active" href="#scanner"><ScanSearch size={17} />Prompt scanner</a><a className="nav-link" href="#history"><Clock3 size={17} />Session history</a></nav><div className="sidebar-bottom"><span className="local-dot" />Local analysis<p>Your prompts stay in this session and are not saved.</p><span className="module-tag">MODULE 05 · AUDIO SCAN</span></div></aside>
-    <main className="main-area"><header className="topbar"><div className="breadcrumbs">Security tools <span>/</span> <strong>Prompt scanner</strong></div><div className="connection"><span className="local-dot" />LOCAL WORKSPACE</div></header>
+    <main className="main-area"><header className="topbar"><div className="breadcrumbs">Security tools <span>/</span> <strong>Prompt scanner</strong></div><div className="topbar-actions"><div className="connection"><span className="local-dot" />LOCAL WORKSPACE</div><div className="theme-toggle" role="group" aria-label="Color theme"><button type="button" className={theme === 'light' ? 'selected' : ''} aria-label="Use light theme" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}><Sun size={15} /><span>Light</span></button><button type="button" className={theme === 'dark' ? 'selected' : ''} aria-label="Use dark theme" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}><Moon size={15} /><span>Dark</span></button></div></div></header>
       <div className="content-wrap"><section className="page-intro"><div><span className="eyebrow intro-eyebrow"><Activity size={14} /> AI SECURITY <span className="intro-divider">/</span> MODULE 05</span><h1>Prompt security<br /><span>workspace.</span></h1><p>Review text, files, and local audio transcripts for common jailbreak and prompt injection indicators.</p></div><div className="intro-badge"><Shield size={31} /><span>LOCAL BY DESIGN</span></div></section>
         <div className="dashboard-grid"><div className="main-column">
           <section className="card scan-card" id="scanner"><div className="card-heading"><div><span className="eyebrow">INPUT</span><h2>Prompt to inspect</h2></div><span className="step-number">01</span></div><form onSubmit={scanPrompt} noValidate><label htmlFor="prompt-text">Paste or type the text you want to review</label><textarea id="prompt-text" maxLength={MAX_LENGTH} value={prompt} onChange={(event) => setPrompt(event.target.value)} placeholder="Enter a prompt for a first-pass security review…" /><div className="input-footer"><span>{prompt.length.toLocaleString()} / {MAX_LENGTH.toLocaleString()} characters</span><div className="form-actions"><button type="button" className="button-quiet" onClick={resetScan} disabled={loading}><RotateCcw size={15} />Clear</button><button type="submit" className="button-primary" disabled={loading}>{loading ? <><span className="spinner" />Scanning…</> : <>Scan prompt <ArrowRight size={16} /></>}</button></div></div></form></section>
