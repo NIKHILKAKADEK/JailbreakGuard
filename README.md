@@ -1,170 +1,405 @@
-# JailbreakGuard — Module 1
+# 🛡️ JailbreakGuard AI
 
-JailbreakGuard is a local dashboard for reviewing text for a few obvious jailbreak and prompt-injection indicators. The React + Vite frontend sends text to a Flask API, which runs the transparent rules in `scanner.py`. Matches are prompts for human review, not proof that text is malicious; no match is not proof that text is safe.
+### AI-Powered Prompt Injection & Jailbreak Detection Platform
 
-Submitted prompt text and uploaded file contents are processed locally in memory for the current request. Uploads are limited to 10 MB and are not saved; responses contain only filename, detected format, character count, extraction status, and scan findings. The application does not log prompt or extracted content and makes no external API calls. Supported uploads are TXT, Markdown, PDF, DOCX, PNG, JPG, JPEG, PPTX, XLSX, JSON, XML, HTML, HTM, WAV, MP3, M4A, and FLAC. XLSX formulas and macros are not executed. XML is parsed with external entities disabled, and HTML scripts and styles are ignored.
+<p align="center">
+  <strong>Inspect. Detect. Understand. Protect.</strong>
+  <br />
+  A local-first security dashboard that analyzes text, documents, and audio transcripts for suspicious prompt-injection and jailbreak indicators.
+</p>
 
-## Requirements
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white" alt="Python 3.12" />
+  <img src="https://img.shields.io/badge/Flask-Backend-black?logo=flask" alt="Flask" />
+  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-Build%20Tool-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Status-Development-orange" alt="Development" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/NIKHILKAKADEK/JailbreakGuard">Repository</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-testing">Testing</a>
+</p>
+
+---
+
+## 🚀 Overview
+
+**JailbreakGuard** is a cybersecurity project designed to identify suspicious instructions and potential prompt-injection patterns in user-provided content.
+
+It combines a React dashboard with a Python Flask backend and a transparent rule-based scanning engine.
+
+The application can inspect text, extract content from supported documents, and scan audio by transcribing it locally before checking the transcript.
+
+Rather than treating every match as a confirmed attack, JailbreakGuard presents findings as indicators for human review.
+
+### 🎯 Why JailbreakGuard?
+
+As AI applications become more common, prompt injection and jailbreak attempts create new security challenges.
+
+JailbreakGuard explores how a transparent detection system can help identify suspicious instructions before they are used in an AI workflow.
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---|---|
+| 🔍 Text Scanning | Analyze text for suspicious jailbreak and prompt-injection indicators |
+| 📄 File Scanning | Extract and inspect content from supported document formats |
+| 🎧 Audio Scanning | Transcribe audio locally and scan the resulting transcript |
+| 🧠 Rule-Based Detection | Uses readable detection patterns in `scanner.py` |
+| 📊 Evaluation Reports | Generate benchmark metrics and error-analysis reports |
+| 🤖 ML Experiment | Optional TF-IDF + Logistic Regression comparison |
+| 🧪 Automated Tests | Backend tests using Pytest |
+| 🔒 Local Processing | Submitted content is processed locally in memory for the current request |
+| 📱 Dashboard | React-based interface with session history |
+
+---
+
+## 🖥️ Dashboard Preview
+
+> Add screenshots of your actual application here.
+
+<p align="center">
+  <img src="docs/images/dashboard.png" alt="JailbreakGuard dashboard preview" width="90%" />
+</p>
+
+**To add your screenshot:**
+1. Create a folder named `docs/images/`.
+2. Save your dashboard screenshot as `dashboard.png`.
+3. Upload it to GitHub.
+
+Until you add the screenshot, this image placeholder will not display.
+
+---
+
+## 🏗️ Architecture
+
+JailbreakGuard uses a simple frontend-to-backend architecture.
+
+```mermaid
+flowchart TD
+    A["👤 User"] --> B["React + Vite Dashboard"]
+    B --> C["Flask API"]
+    C --> D{"Input Type"}
+    D --> E["Text Scanner"]
+    D --> F["File Scanner"]
+    D --> G["Audio Transcriber"]
+    F --> H["Text Extraction"]
+    G --> I["Local Speech-to-Text"]
+    H --> E
+    I --> E
+    E --> J["Detection Rules"]
+    J --> K["Scan Findings"]
+    K --> L["Dashboard Results"]
+```
+
+### 🔄 How It Works
+
+1. The user submits text or uploads a supported file.
+2. The React frontend sends the request to the Flask backend.
+3. The backend validates the input.
+4. Documents are processed by the file extraction module; audio is transcribed through the optional local transcription pipeline.
+5. Extracted text is passed to the detection engine.
+6. The scanner checks for configured suspicious patterns.
+7. Findings are returned to the dashboard for human review.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React |
+| Development Server | Vite |
+| Backend | Python, Flask |
+| Detection Engine | Python, Regular Expressions |
+| Optional ML Experiment | Scikit-learn, TF-IDF, Logistic Regression |
+| Document Processing | pypdf, python-docx, python-pptx, openpyxl |
+| XML Security | defusedxml |
+| Audio Transcription | faster-whisper, PyAV |
+| Testing | Pytest |
+| Dataset Processing | PyArrow |
+
+---
+
+## 🔍 Supported Input Formats
+
+### Text and Documents
+
+`TXT` `MD` `PDF` `DOCX` `PPTX` `XLSX` `JSON` `XML` `HTML` `HTM`
+
+### Images
+
+`PNG` `JPG` `JPEG`
+
+Image OCR is optional and requires locally installed Tesseract OCR.
+
+### Audio
+
+`WAV` `MP3` `M4A` `FLAC`
+
+Audio uploads are limited to 10 MB and five minutes by default.
+
+---
+
+## ⚙️ Installation
+
+### Prerequisites
+
+Install the following before starting:
 
 - Python 3.12
-- pypdf, python-docx, python-pptx, openpyxl, and defusedxml from requirements.txt
-- scikit-learn from requirements.txt for the optional local classifier experiment
 - Node.js and npm
+- Git
+- Visual Studio Code (recommended)
 
-## Setup in Windows CMD
+### 1. Clone the repository
 
-Open **two** Command Prompt windows in `D:\JailbreakGuard`. In the first window, set up and start Flask:
+```bash
+git clone https://github.com/NIKHILKAKADEK/JailbreakGuard.git
+cd JailbreakGuard
+```
+
+### 2. Create a Python virtual environment
 
 ```cmd
-cd /d D:\JailbreakGuard
+python -m venv .venv
+```
+
+Activate it:
+
+```cmd
 .venv\Scripts\activate
-python --version
+```
+
+### 3. Install backend dependencies
+
+```cmd
 python -m pip install -r requirements.txt
+```
+
+### 4. Start the Flask backend
+
+```cmd
 python app.py
 ```
 
-If `.venv\Scripts\python.exe` reports `No Python at ...Python312\python.exe`, the existing environment is stale. Install Python 3.12 from python.org with **Add Python to PATH** enabled, open a new CMD window, then repair it:
+The Flask API runs locally at:
+
+`http://127.0.0.1:5000`
+
+### 5. Install frontend dependencies
+
+Open a **second CMD window**:
 
 ```cmd
-cd /d D:\JailbreakGuard
-rmdir /s /q .venv
-python -m venv .venv
-.venv\Scripts\activate
-python -m pip install -r requirements.txt
+cd frontend
+npm install
 ```
 
-Only run `rmdir` after confirming the target is exactly `D:\JailbreakGuard\.venv`.
-
-In a second CMD window, install and start the React development server:
+### 6. Start the React frontend
 
 ```cmd
-cd /d D:\JailbreakGuard\frontend
-npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser. Keep both servers running while using the dashboard. Vite forwards `/scan` and `/scan-file` requests to Flask at `http://127.0.0.1:5000`; Flask itself provides the API and does not serve the React page. Stop either server with `Ctrl+C`.
+Open your browser:
 
-## Run backend tests
+**http://localhost:5173**
 
-In another CMD window (or after stopping a server):
+Keep both servers running while using the dashboard.
+
+---
+
+## 🔌 API Endpoints
+
+The Flask backend currently provides these endpoints:
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/scan` | Scan submitted text |
+| POST | `/scan-file` | Upload and scan a supported file |
+| POST | `/scan-audio` | Transcribe and scan an audio upload |
+
+The React development server forwards `/scan` and `/scan-file` requests to Flask through its Vite proxy configuration.
+
+---
+
+## 🧪 Testing
+
+JailbreakGuard includes automated backend tests.
+
+Run the test suite:
 
 ```cmd
-cd /d D:\JailbreakGuard
-.venv\Scripts\activate
 python -m pytest -q
 ```
 
-## Offline dataset benchmark
-
-The optional evaluator reads the local Parquet dataset with PyArrow and calls the production `scanner.scan_text()` function. The dataset README documents `label` values `0 = benign` and `1 = malicious`; the evaluator checks every selected label and stops with an error on unrecognized values. It also validates the scanner's `level` result (`clear`/`warning`) instead of assuming an output shape. It never uploads text or writes prompt content to the report. Reports contain row counts, label counts, metrics, and category names only.
-
-Install the evaluator dependency and inspect the locally downloaded files first:
+Build the frontend:
 
 ```cmd
-cd /d D:\JailbreakGuard
-.venv\Scripts\python.exe -m pip install -r requirements.txt
-.venv\Scripts\python.exe scripts\evaluate_dataset.py --inspect
+cd frontend
+npm run build
 ```
 
-Run a full test split, or use a deterministic sample. The seed controls hash-ranked row selection and the report includes the selected sample limit and seed:
+These commands help verify backend tests and frontend compilation. They do not replace real-world security testing.
+
+---
+
+## 📊 Dataset Evaluation
+
+The project includes an optional offline dataset evaluator that uses the production `scanner.scan_text()` function.
+
+It supports:
+- Train, validation, and test evaluation.
+- Accuracy, precision, recall, and F1-score.
+- False-positive and false-negative rates.
+- Confusion matrix.
+- Category-level metrics.
+- Dataset overlap inspection.
+
+Example:
 
 ```cmd
-.venv\Scripts\python.exe scripts\evaluate_dataset.py --dataset core --split test
-.venv\Scripts\python.exe scripts\evaluate_dataset.py --dataset full --split test --max-samples 500 --seed 2026 --output reports\full_test_500.json
-.venv\Scripts\python.exe scripts\evaluate_dataset.py --dataset data --split train --max-samples 500 --seed 2026
+python scripts/evaluate_dataset.py --dataset core --split test
 ```
 
-Available configurations are `core` and `full` with `train`, `validation`, and `test` splits, plus `data` with `train`. `--inspect` reports the Parquet schemas, observed label/category distributions, exact duplicate files, and row-level overlap by text hash and `group_id`; it emits no prompt text. In this checkout, core/full validation files and core/full test files have identical SHA-256 hashes, so these pairs are the same partitions and should not be treated as independent evaluations.
-
-The default JSON output is written under `reports/`. Its shape is similar to:
-
-```json
-{
-  "dataset": "core",
-  "split": "test",
-  "source_rows": 942,
-  "seed": 2026,
-  "sample_limit": 500,
-  "metrics": {
-    "examples": 500,
-    "skipped_examples": 0,
-    "accuracy": 0.0,
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1": 0.0,
-    "false_positive_rate": 0.0,
-    "false_negative_rate": 0.0,
-    "confusion_matrix": {"tn": 0, "fp": 0, "fn": 0, "tp": 0},
-    "label_distribution": {"benign": 0, "attack": 0},
-    "per_category": {}
-  }
-}
-```
-
-The numbers above are schema placeholders, not benchmark results. This rule-based benchmark measures performance on one local dataset and does not prove protection against all prompt injections or jailbreaks. The `data` split's metadata is not described in the dataset README; inspect its actual labels with `--inspect` before interpreting its metrics.
-
-### Training error analysis and local model comparison
-
-These development commands only read `core/train` and `core/validation`. The analysis report stores category counts, scanner rule counts, aggregate obfuscation signals, and overlap counts; it never stores prompt text or excerpts. The overlap comparison normalizes text for exact matches and uses 3-word-shingle Jaccard at 0.85 for near matches. In this checkout the observed train/validation overlap was 31 normalized exact row pairs (28 distinct normalized texts), 11 additional near-duplicate pairs, and no shared `group_id`s. Treat the split metrics as correlated evidence; do not include `data/train`, and do not treat `full` validation/test as independent from `core` validation/test.
-
-An optional local TF-IDF + Logistic Regression experiment fits on `core/train`, uses `core/validation` to select the model and threshold, and compares rules-only, ML-only, and OR-hybrid predictions. It excludes normalized exact and near-duplicate training rows found against validation, then fits only on the remaining `core/train` rows. It does not save model artifacts or prompt text. It prefers validation candidates with precision at least 0.90 and false-positive rate at most 0.05; if none qualify, the report marks that constraint as unmet. Validation results are selection evidence and may be optimistic. They do not establish real-world protection, and the classifier remains an experiment rather than a production scanner.
-
-Reproduce the reports in Windows CMD:
+Run a deterministic sample:
 
 ```cmd
-cd /d D:\JailbreakGuard
-.venv\Scripts\python.exe scripts\evaluate_dataset.py --dataset core --split train --output reports\core_train_before.json
-.venv\Scripts\python.exe scripts\evaluate_dataset.py --dataset core --split validation --output reports\core_validation_before.json
-.venv\Scripts\python.exe scripts\analyze_rules.py --output reports\core_train_error_analysis.json
-.venv\Scripts\python.exe scripts\evaluate_models.py --output reports\core_validation_models.json
-.venv\Scripts\python.exe -m pytest -q
-cd /d D:\JailbreakGuard\frontend
-npm.cmd run build
+python scripts/evaluate_dataset.py --dataset full --split test --max-samples 500 --seed 2026 --output reports\full_test_500.json
 ```
 
-## Project files
+### Optional ML Comparison
 
-- `app.py` - Flask APIs at `POST /scan`, `POST /scan-file`, and `POST /scan-audio`.
-- `scripts/evaluate_dataset.py` - offline scanner benchmark and dataset overlap inspection.
-- `scripts/analyze_rules.py` - prompt-free core train/validation error-signal and overlap analysis.
-- `scripts/evaluate_models.py` - isolated local TF-IDF/logistic-regression validation experiment.
-- `file_scanner.py` — in-memory file validation and text extraction.
-- `scanner.py` — small, readable, rule-based text scanner.
-- `tests/` — scanner and Flask API tests.
-- `requirements.txt` — Python dependencies.
-- `frontend/src/App.jsx` — React dashboard, scan workflow, and in-memory session history.
-- `frontend/src/styles.css` — responsive dashboard styling.
-- `frontend/vite.config.js` — Vite dev server and Flask API proxy.
-- `frontend/package.json` — frontend dependencies and commands.
+The project also contains an experimental TF-IDF + Logistic Regression pipeline.
 
-The older `templates/` and `static/` files are retained as reference files from the original Flask interface; Flask no longer serves them.
+It compares:
+- Rules-only predictions.
+- ML-only predictions.
+- OR-hybrid predictions.
 
-## Optional image OCR setup
-
-Image OCR uses local Tesseract through Pillow and pytesseract; no model or content is sent to an external service. Install the Python packages with `python -m pip install Pillow pytesseract`. Install Tesseract OCR for Windows separately and ensure `tesseract.exe` is on PATH. Restart Flask afterward. If OCR dependencies or the executable are missing, image scans return an explicit setup error. Image-only PDFs are reported as requiring OCR; PDF OCR is not included in this phase.
-
-
-## Local audio scanning (Module 5)
-
-`POST /scan-audio` accepts WAV, MP3, M4A, and FLAC uploads up to 10 MB. Audio must also be no longer than 5 minutes by default (`JAILBREAKGUARD_MAX_AUDIO_SECONDS` can change this limit). The service validates the extension and container signature, decodes audio locally, then scans the transcript with the existing `scanner.py` rules. Transcripts and audio are held in memory for the request and are not returned or logged. This is not a forensic audio authentication system.
-
-The optional audio path uses `faster-whisper` with PyAV. It is loaded lazily on the first audio request, not when Flask starts. The default model is `tiny`, CPU device, and `int8` compute to avoid requiring a GPU. The tiny model is approximately 75 MB of weights and needs additional working RAM; larger models require more download space and memory. Dependencies can be installed in Windows CMD with:
+Run:
 
 ```cmd
-cd /d D:\JailbreakGuard
-.venv\Scripts\python.exe -m pip install -r requirements.txt
+python scripts/analyze_rules.py --output reports\core_train_error_analysis.json
+python scripts/evaluate_models.py --output reports\core_validation_models.json
 ```
 
-On first use, faster-whisper may download the selected model weights from Hugging Face. User audio remains local, but downloading weights requires network access. To use a previously downloaded model directory and stay offline at inference time, set these variables before starting Flask:
+**Important:** Validation results are model-selection evidence, not proof of real-world protection. Dataset partitions can contain overlap, so benchmark results must be interpreted carefully.
 
-```cmd
-set JAILBREAKGUARD_WHISPER_MODEL=D:\Models\faster-whisper-tiny
-set JAILBREAKGUARD_WHISPER_DEVICE=cpu
-set JAILBREAKGUARD_WHISPER_COMPUTE_TYPE=int8
-.venv\Scripts\python.exe app.py
+---
+
+## 🔐 Privacy & Security
+
+JailbreakGuard is designed for local processing.
+
+- Submitted text and uploaded content are processed in memory for the current request.
+- Uploaded files are not saved by the application.
+- Prompt and extracted content are not logged.
+- The application does not make external API calls for ordinary scanning.
+- XML external entities are disabled.
+- HTML scripts and styles are ignored during extraction.
+- XLSX formulas and macros are not executed.
+- Audio transcripts are not returned or logged.
+
+**Audio model note:** On first use, faster-whisper may download model weights from Hugging Face. Audio processing is local, but downloading model weights requires network access.
+
+---
+
+## ⚠️ Limitations
+
+JailbreakGuard is an experimental detection and analysis tool.
+
+- A detected pattern is an indicator for review, not proof of a malicious prompt.
+- No detection does not guarantee that content is safe.
+- Rule-based scanning cannot identify every possible attack.
+- ML results from local datasets do not establish production-grade security.
+- Audio transcription accuracy has not been verified using a real-world benchmark in this project.
+- This application is not a complete AI firewall or forensic audio authentication system.
+
+Do not use it as the sole security control for a production AI system.
+
+---
+
+## 📁 Project Structure
+
+```text
+JailbreakGuard/
+│
+├── app.py
+├── scanner.py
+├── file_scanner.py
+├── audio_transcriber.py
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── styles.css
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+│
+├── scripts/
+│   ├── analyze_rules.py
+│   ├── evaluate_dataset.py
+│   └── evaluate_models.py
+│
+├── reports/
+│
+├── tests/
+│
+├── templates/
+├── static/
+│
+├── test_samples/
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
-`JAILBREAKGUARD_WHISPER_MODEL` also accepts faster-whisper model names such as `tiny`, `base`, or `small`; non-local model names can trigger a weight download on first request. The upload byte limit can be changed with `JAILBREAKGUARD_MAX_UPLOAD_BYTES` (default 10485760), the duration limit with `JAILBREAKGUARD_MAX_AUDIO_SECONDS` (default 300), and the normalized peak level treated as silence with `JAILBREAKGUARD_AUDIO_SILENCE_THRESHOLD` (default 0.0001; valid range 0 to 1). Missing dependencies, unavailable weights, decoding errors, silence, and empty transcripts return explicit errors/statuses and are never reported as clean scans. Do not describe this setup as offline until dependencies and model weights have been installed locally and verified without network access.
+The older `templates/` and `static/` files are retained as reference files from the original Flask interface. Flask no longer serves the React dashboard through those files.
 
-Audio scanning is tested with mocked decoder/model outputs; no real audio sample or Whisper model has been used to verify transcription accuracy. Before relying on it, install the runtime, scan a short known WAV/MP3 sample, compare the returned indicators against its transcript yourself, and test with network access disabled after caching the model if offline use is required.
+---
+
+## 🛣️ Future Improvements
+
+Potential directions for future development:
+
+- [ ] More advanced prompt-injection detection techniques.
+- [ ] Improved detection of obfuscated and indirect instructions.
+- [ ] Better detection evaluation across diverse datasets.
+- [ ] More detailed explanations for individual detection rules.
+- [ ] Improved dashboard visualizations.
+- [ ] Expanded security testing and adversarial evaluation.
+- [ ] Integration with AI application security workflows.
+
+---
+
+## 👨‍💻 Author
+
+**Nikhil Kakade**
+
+B.Tech — Artificial Intelligence & Data Science
+
+Interested in AI Security, Cybersecurity, Machine Learning, and Software Development.
+
+<p align="center">
+  <a href="https://github.com/NIKHILKAKADEK">
+    <img src="https://img.shields.io/badge/GitHub-NIKHILKAKADEK-181717?style=for-the-badge&logo=github" alt="GitHub profile" />
+  </a>
+</p>
+
+---
+
+<p align="center">
+  <strong>🛡️ JailbreakGuard — Making AI interactions easier to inspect.</strong>
+  <br />
+  Built as an AI and cybersecurity portfolio project.
+</p>
